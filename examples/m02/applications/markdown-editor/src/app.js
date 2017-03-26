@@ -7,33 +7,39 @@ import './css/style.css'
 class App extends Component {
   constructor () {
     super()
-    this.state = {
-      title: '...',
-      Component: 'div'
+    this.state = { 
+      value: '',
+      texto: ''
+    }
+
+    this.handleSubmit = (e) => {
+      e.preventDefault()
+
+      this.setState({
+        value: e.target.textarea.value
+      })
     }
   }
 
-  getTitle () {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('My app with async / await!')
-      }, 2000)
-    })
-  }
-
-  async componentDidMount () {
-    const title = await import('components/title')
-
-    this.setState({
-      title: await this.getTitle(),
-      Component: title.default
-    })
+  // Databind: configurado por arrow function
+  capturaTextoDigitado = event => {
+    this.setState({texto: event.target.value})
   }
 
   render () {
     return (
-      <div>
-        <this.state.Component>{this.state.title}</this.state.Component>
+      <div className='editor'>
+        <form onSubmit={this.handleSubmit}>
+          <textarea name='textarea' onChange={this.capturaTextoDigitado}/>
+          <button type='submit'>Renderizar markup</button>
+        </form>
+
+        <div className='view'>
+          {this.state.value}
+        </div>
+        <div className='view'>
+          {this.state.texto}
+        </div>
       </div>
     )
   }
