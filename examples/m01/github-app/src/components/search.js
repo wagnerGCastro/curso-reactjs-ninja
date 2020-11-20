@@ -8,6 +8,11 @@ const Search = ({ handleSearch }) => (
       type='search'
       placeholder='Digite o nome do usuário no GitHub'
       onKeyUp={handleSearch}
+
+      // onKeyUp={(e) => {
+      //   const keycode = e.which || e.keyCode
+      //   console.log('code tecla ->> ', keycode);
+      // }}
     />
   </div>
 )

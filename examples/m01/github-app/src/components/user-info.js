@@ -7,7 +7,7 @@ const UserInfo = ({ userinfo }) => (
     <img src={userinfo.photo} />
 
     <h1>
-      <a href={`https://github.com/${userinfo.login}`}>
+      <a href={`https://github.com/${userinfo.login}`} target="_blank">
         {userinfo.username}
       </a>
     </h1>

@@ -32,8 +32,66 @@ class App extends Component {
             following: result.following
           }
         })
+
       })
-    }
+
+      // console.log('repos Lengt -> ', this.state.userinfo.repos > 0);
+      // console.log('repos Valor -> ', this.state.userinfo.repos);
+
+      // GET REPOSITORIES - Erro por nao ser assincrona
+      // let user =  this.state.userinfo;
+      // if(user != 'null' ) {
+      //   ajax().get(`https://api.github.com/users/${value}/repos`)
+      //     .then((result) => {
+      //       // console.log('result.public_repos -< ', result);
+      //
+      //       let repositories = [];
+      //       result.map((repo, index) => (
+      //         // console.log(repo.name)
+      //         // console.log(repo.description)
+      //         //console.log(repo.html_url)
+      //         repositories.push({
+      //           name: repo.name,
+      //           description: repo.description,
+      //           url: repo.html_url
+      //         })
+      //       ))
+      //
+      //       // console.log(repositories);
+      //
+      //       this.setState({
+      //         repos: repositories
+      //       })
+      //     })
+      //     // console.log('repos Valor -> ', this.state.repos);
+      //   }
+      // }
+
+
+      // let user =  this.state.userinfo;
+      // if(user != 'null' ) {
+        ajax().get(`https://api.github.com/users/${value}/repos`)
+          .then((result) => {
+            let repositories = [];
+            result.map((repo, index) => (
+              // console.log(repo.name)
+              // console.log(repo.description)
+              //console.log(repo.html_url)
+              repositories.push({
+                name: repo.name,
+                description: repo.description,
+                url: repo.html_url
+              })
+            ))
+
+            // console.log(repositories);
+            this.setState({
+              repos: repositories
+            })
+          })
+          // console.log('repos Valor -> ', this.state.repos);
+        }
+      // }
   }
 
   render () {
@@ -41,7 +99,7 @@ class App extends Component {
       userinfo={this.state.userinfo}
       repos={this.state.repos}
       starred={this.state.starred}
-      handleSearch={(e) => this.handleSearch(e)}
+      handleSearch={(e) => this.handleSearch(e)} // obs: aqui nao executa a função (arrow Function)
     />
   }
 }

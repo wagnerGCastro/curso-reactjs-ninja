@@ -8,12 +8,15 @@ const Repos = ({ className, title, repos }) => (
     <ul>
       {repos.map((repo, index) => (
         <li key={index}>
-          <a href={repo.link}>{repo.name}</a>
+
+          <a target="_blank" href={repo.url}>{repo.name}</a>
         </li>
       ))}
     </ul>
   </div>
 )
+
+  // { console.log(repo) }
 
 Repos.defaultProps = {
   className: ''

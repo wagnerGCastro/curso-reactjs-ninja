@@ -12,10 +12,12 @@ const AppContent = ({ userinfo, repos, starred, handleSearch }) => (
     {!!userinfo && <UserInfo userinfo={userinfo} />}
     {!!userinfo && <Actions />}
 
+
+
     {!!repos.length &&
       <Repos
         className='repos'
-        title='Repositórios:'
+        title='Repositórios :'
         repos={repos}
       />
     }
