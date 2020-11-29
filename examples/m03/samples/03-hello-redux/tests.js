@@ -1,5 +1,7 @@
+
+
 console.assert(
-  counter(0, { type: 'INCREMENT' }) === 1
+  counter(0, { type: 'INCREMENT' }) === 1,
 )
 
 console.assert(
